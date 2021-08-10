@@ -1,0 +1,122 @@
+---
+title: "Making and Indexing in R"
+author: "Clarissa Boyajian"
+date: "8/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Make some vectors and check them out
+
+```{r}
+# Create vector with character class:
+cats <- c("olive", 20, TRUE, 5L)
+# check the class: `class(cats)` - do in console generally (don't need saved)
+# if there are characters in your vector everything will get assigned to character (only  one data type in vectors)
+
+# Create vector with numeric class:
+cat_age <- c(1.4, 5.2, 6, 10)
+#check the class: `class(cats_age)`
+
+# Create vector with integer class:
+cat_miles <- c(4L, 5L, 6L)
+typeof(cat_miles)
+# check type of vector with `typeof()`
+
+# Use question to check if it's character class
+is.character(cat_miles)
+is.character(cats)
+```
+
+```{r}
+cat_food <- c(olive = "wild ones",
+               chico = "blue diamond",
+               gus = "fancy feast",
+               neko = "purina")
+
+cat_food
+typeof(cat_food)
+
+chico_food <- cat_food[2]
+# can call out specific "column" based on location in vector
+cat_food["chico"]
+# call out specific "columns" from value name vector
+
+cat_size <- c(olive = 8, chico = 13)
+test <- 6 + cat_size[2]
+test
+```
+
+```{r}
+cars <- c("red", "white", "yellow", "silver", "blue", "black", "purple", "green", "gray")
+
+cars[2:5]
+
+i <- 3
+cars[i]
+# because i is stored at 3, it calls out the 3rd position value
+
+i <- c(1, 5, 7)
+cars[i]
+# overwrote i above, then pulled the 1st, 5th, and 7th colors with new `cars[]`
+
+cars[3] <- "BURRITOS"
+# vectors are mutable in R, so can change the 3rd position by using `cars[location #] <- "new name"`
+```
+
+## Lists in R
+
+```{r}
+urchins <- list("blue", 
+                c(1, 2, 3), 
+                seq(from = 0, to = 50, by = 0.5), 
+                1200L)
+# use L at end of number to tell R to store a number as an integer
+
+urchins
+# [[1]] - tells you element of list
+# [1] - tells us what we're at within the list (if wraps to multiple line will tell us how many we're at, at the beginning of each line)
+
+urchins[[1]]
+# double square brackets shows you the contents of the element (ALMOST ALWAYS USE THIS)
+urchins[1]
+# single square bracket shows you the list of the element
+```
+
+```{r}
+tacos <- list(topping = c("onoin", "cilantro", "guacamole"),
+              filling = c("beans", "meat", "veggies"), 
+              price = c(6.75, 8.25, 9.50))
+# can convet into data frame (because all vectors are same lengths)
+
+taco_price <- c(tacos$price)
+taco_price <- tacos[[3]]
+```
+
+## Make a data frame
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+
+fruit
+# data frame structure is what we usually see data as (ex: excel, tables)
+class(fruit)
+class(fruit$mass)
+
+fruit$type
+fruit[, 1]
+# leave row term blank to request all info in rows, include 1 for only column 1
+```
+
+## Data wrangling skills
+
+```{r}
+
+```
+
